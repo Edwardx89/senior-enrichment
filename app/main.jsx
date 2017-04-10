@@ -14,8 +14,8 @@ import AddCampus from './components/AddCampus';
 render(
   <Provider store={store}>
    <Router history={hashHistory}>
-    <Route path='/' component={Main}>
-      <IndexRoute component={AddCampus} />
+    <Route path='/'>
+      <IndexRoute component={Main} />
       <Route path='/user/add' component={User} />
       <Route path='/campus/add' component={AddCampus} />
     </Route>
