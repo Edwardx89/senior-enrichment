@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux'
 
-const initialState = {}
+const initialState = {
+  allUsers: [],
+  allCampuses: [],
+  selectedUser: {},
+  selectedCampus: {},
+}
 
 const rootReducer = function(state = initialState, action) {
   switch(action.type) {
