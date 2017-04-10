@@ -6,8 +6,8 @@ export default function UserComponent (props) {
   return (
   <div>
     <h2> Add a Student </h2>
-    <div className="user">
-      <form className="user-form">
+    <div className="student">
+      <form className="student-form">
         First Name:
           <input type="text" name="First Name" /> <br />
         Last Name:
