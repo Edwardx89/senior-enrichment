@@ -2,16 +2,16 @@
 import React, {Component} from 'react';
 
 export default function UserComponent (props) {
-  console.log("I am in the UserComponent")
+  console.log("I am in the UserComponent", props)
   return (
   <div>
     <h2> Add a Student </h2>
     <div className="student">
-      <form className="student-form">
+      <form className="student-form" onSubmit>
         First Name:
-          <input type="text" name="First Name" /> <br />
+          <input type="text" name="firstName"/> <br />
         Last Name:
-          <input name="Last Name" /> <br />
+          <input name="lastName" /> <br />
         Email:
           <input name="Email" /> <br />
         <input type="submit" value="Submit" />

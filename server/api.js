@@ -9,7 +9,7 @@ const Campus = require('../db/models/campus');
 // Ideally you would have something to handle this, so if you have time try that out!
 api.get('/hello', (req, res) => res.send({ hello: 'world' }))
 
-api.get('/', (res, req, next) => {
+api.get('/students', (res, req, next) => {
 	Student.findAll()
 		.then((foundUser) => {
 			res.send(foundUser)
