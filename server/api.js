@@ -33,5 +33,13 @@ api.post('/user/add', (res, req, next) => {
 	.catch(next);
 });
 
+api.post('campus/add', (req, res, next) => {
+	Campus.create(req.body)
+	.then((createdCampus) => {
+		res.send(createdCampus)
+	})
+	.catch(next);
+});
+
 
 module.exports = api
