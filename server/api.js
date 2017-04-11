@@ -9,7 +9,8 @@ const Campus = require('../db/models/campus');
 // Ideally you would have something to handle this, so if you have time try that out!
 api.get('/hello', (req, res) => res.send({ hello: 'world' }))
 
-api.get('/students', (res, req, next) => {
+api.get('/students', (req, res, next) => {
+	console.log('getting students from backend')
 	Student.findAll()
 		.then((foundUser) => {
 			res.send(foundUser)
@@ -17,7 +18,7 @@ api.get('/students', (res, req, next) => {
 		.catch(next);
 });
 
-api.get('/student/:id', (res, req, next) => {
+api.get('/student/:id', (req, res, next) => {
 	Student.findById(req.params.id)
 		.then((foundUser) => {
 			res.send(foundUser)
@@ -25,7 +26,8 @@ api.get('/student/:id', (res, req, next) => {
 		.catch(next);
 });
 
-api.post('/student/add', (res, req, next) => {
+api.post('/student/add', (req, res, next) => {
+	console.log('posting...', req.body)
 	Student.create(req.body)
 		.then((createdUser) => {
 			res.status(201).send(createdUser)

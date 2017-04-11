@@ -1,6 +1,7 @@
 import axios from 'axios';
 export const RECEIVE_STUDENTS = 'RECEIVE_STUDENTS';
 export const RECEIVE_CAMPUSES = 'RECEIVE_CAMPUSES';
+export const ADD_STUDENT = 'ADD_STUDENT';
 
 export const receiveUsers = (students) => {
   console.log('action', students)
@@ -17,28 +18,51 @@ export const receiveCampuses = (campuses) => {
   };
 };
 
+export const addStudent = (student) => {
+  return {
+    type: ADD_STUDENT,
+    student: student,
+  };
+};
+
 export const getStudents = () => {
   return (dispatch) => {
-    axios.get('/students')
-    .then((response) => {
-      return response.data;
-    })
-    .then((allStudents) => {
-      dispatch(receiveUsers(allStudents));
-    })
-    .catch(err => {console.log(err)});
-  };
-}
+      axios.get('/api/students')
+      .then((response) => {
+        return response.data;
+      })
+      .then((allStudents) => {
+        dispatch(receiveUsers(allStudents));
+      })
+      .catch(err => {console.log(err)});
+    };
 
-export const getCampuses = () => {
-  return (dispatch) => {
-    axios.get('/campuses')
-    .then((response) => {
-      return response.data;
-    })
-    .then((allCampuses) => {
-      dispatch(receiveCampuses(allCampuses));
-    })
-    .catch(err => {console.log(err)});
-  };
-}
+  }
+
+  export const getCampuses = () => {
+    return (dispatch) => {
+      axios.get('/api/campuses')
+        .then((response) => {
+          return response.data;
+        })
+        .then((allCampuses) => {
+          dispatch(receiveCampuses(allCampuses));
+        })
+        .catch(err => { console.log(err) });
+    };
+  }
+
+  export const submitStudent = (name) => {
+    console.log('posting', name)
+    return (dispatch) => {
+      axios.post('/api/student/add', name)
+        .then((res) => {
+          console.log('this data from posting', res)
+          return res.data;
+        })
+        .then((newStudent) => {
+          dispatch(addStudent(newStudent));
+        })
+        .catch(next);
+    };
+  }

@@ -1,7 +1,8 @@
 'use strict';
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
-export default function AddCampus (props) {
+export function AddCampus (props) {
   console.log("I am in the AddCampus")
   return (
   <div>
@@ -20,3 +21,21 @@ export default function AddCampus (props) {
    </div>
   )
 }
+
+
+/*------------------Container---------------------*/
+const mapStateToProps = (state) => {
+  console.log('add Campus Container', state)
+  return {
+
+  };
+};
+
+const mapDispatchToProps = function (dispatch) {
+  return {
+
+  };
+};
+
+const AddCampusContainer = connect(mapStateToProps, mapDispatchToProps)(AddCampus);
+export default AddCampusContainer;

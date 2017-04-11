@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import initialState from '../reducers/index';
 import Campus from './AddCampus';
-import Student from './UserComponent';
+import Student from './AddStudent';
 import {Link} from 'react-router';
 
 export default function Main(props) {

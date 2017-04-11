@@ -8,15 +8,6 @@ module.exports = db.define('campus', {
     type: Sequelize.TEXT,
     allowNull: false,
   },
-  address: {
-    type: Sequelize.STRING
-  },
-  url: {
-    type: Sequelize.STRING,
-    validate: {
-      isUrl: true
-    }
-  },
   image: {
     type: Sequelize.STRING,
     validate: {

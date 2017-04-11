@@ -8,7 +8,7 @@ import {getStudents, getCampuses} from './action-creators/action-creators';
 import store from './store';
 import Root from './components/Root';
 import Main from './components/Main';
-import Student from './components/UserComponent';
+import AddStudent from './components/AddStudent';
 import AddCampus from './components/AddCampus';
 import AllStudents from './components/AllUsers';
 
@@ -24,7 +24,7 @@ render(
     <Route path='/'>
       <IndexRoute component={Main} />
       <Route path="/students" component={AllStudents} onEnter={onloadUsers}/>
-      <Route path='/student/add' component={Student} />
+      <Route path='/student/add' component={AddStudent} />
       <Route path='/campus/add' component={AddCampus} />
     </Route>
    </Router>
