@@ -10,11 +10,13 @@ export class AddStudent extends Component {
     this.state = {
       Name: '',
       email: '',
+      campusId: '',
 
     }
     this.handleName = this.handleName.bind(this)
     this.handleEmail = this.handleEmail.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleOption = this.handleOption.bind(this)
 
   }
 
@@ -33,13 +35,25 @@ export class AddStudent extends Component {
 
   handleSubmit(event) {
     // console.log(this.props)
-    // event.preventDefault();
+    event.preventDefault();
     // console.log('state in handle submit', this.state)
     this.props.onSubmit(this.state)
   }
 
+  handleOption(event){
+    event.preventDefault();
+    this.setState({
+      campusId: event.target.value
+    })
+  }
+
   render() {
     console.log("I am in the AddStudent", this.props)
+    const allCampuses = this.props.allCampuses.allCampuses;
+    const campus = allCampuses.map((campus)=>{
+      console.log(campus.schoolName)
+      return <option value={campus.id} >{campus.schoolName}</option>
+    });
     return (
       <div>
         <h2> Add a Student </h2>
@@ -49,6 +63,10 @@ export class AddStudent extends Component {
           <input type="text" name="firstName" onChange={this.handleName} /> <br />
             Email:
           <input name="Email" onChange={this.handleEmail}/> <br />
+           <select value="this.state.value" onChange={this.handleOption}>
+            <option value="Add-campus">Select a campus</option>
+            {campus}
+            </select> <br />
             <input type="submit" value="Submit" />
           </form>
         </div>
@@ -62,8 +80,8 @@ export class AddStudent extends Component {
 const mapStateToProps = (state) => {
   console.log('add user container', state)
   return {
-
-  };
+   allCampuses: state.allCampuses
+  }
 };
 
 //the onSubmit will go to the this.props in the AddStudent class component.

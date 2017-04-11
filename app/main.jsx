@@ -40,7 +40,7 @@ render(
     <Route path='/'>
       <IndexRoute component={Main} />
       <Route path="/students" component={AllStudents} onEnter={onloadUsers}/>
-      <Route path='/student/add' component={AddStudent} />
+      <Route path='/student/add' component={AddStudent} onEnter={onloadCampuses}/>
       <Route path='/student/:id' component={selectStudent} onEnter={loadStudent}/>
       <Route path='/campuses' component={AllCampuses} onEnter={onloadCampuses}/>
       <Route path='/campus/add' component={AddCampus} />
