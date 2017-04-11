@@ -130,3 +130,13 @@ export const getStudents = () => {
       .catch(err => {console.log(err)});
     };
   }
+
+// export const deleteStudent = (id) => {
+//   return (dispatch) => {
+//     axios.get('api/student/${id}')
+//     .then((res) => res.data)
+//     .then((student) => {
+//       dispatch()
+//     })
+//   }
+// }

@@ -3,10 +3,13 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { getStudent } from '../action-creators/action-creators';
 import {Link} from 'react-router';
+import axios from 'axios';
 
 export function selectStudent(props){
+
   console.log('selectedStudent', props)
   const selectedStudent = props.selectedStudent.selectedStudent;
+
   return (
     <div className="selectedStudent">
     <h3> STUDENT INFO </h3><br />
@@ -33,7 +36,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = function (dispatch) {
   return {
-
   };
 };
 

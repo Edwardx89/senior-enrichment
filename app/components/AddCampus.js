@@ -49,6 +49,7 @@ export class AddCampus extends Component {
           <input name="url" onChange={this.handleUrl}/> <br />
         <input type="submit" value="Submit" />
       </form>
+      <div> <Link to={'/'}>Home Page</Link></div>
     </div>
    </div>
   )
