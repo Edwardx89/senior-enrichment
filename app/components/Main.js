@@ -14,7 +14,7 @@ export default function Main(props) {
         <div>
           <ul>
             <li><Link to={'/students'}>All Students</Link></li>
-            <li> <Link to={'/campus/add'}>All Campuses</Link> </li>
+            <li> <Link to={'/campuses'}>All Campuses</Link> </li>
           </ul>
         </div>
       </div>

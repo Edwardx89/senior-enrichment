@@ -75,7 +75,8 @@ api.get('/campus/:id', (req, res, next) => {
 	.catch(next);
 });
 
-api.post('campus/add', (req, res, next) => {
+api.post('/campus/add', (req, res, next) => {
+	console.log('creating campus')
 	Campus.create(req.body)
 		.then((createdCampus) => {
 			res.send(createdCampus)
@@ -83,7 +84,7 @@ api.post('campus/add', (req, res, next) => {
 		.catch(next);
 });
 
-api.delete('/campuses/:id', (req, res, next) => {
+api.delete('/campus/:id', (req, res, next) => {
 	Campus.destroy({
 		where: { id: req.params.id }})
 	.then(campus =>

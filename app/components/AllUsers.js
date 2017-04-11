@@ -5,14 +5,12 @@ import { connect } from 'react-redux';
 import {getStudents, getCampuses} from '../action-creators/action-creators';
 
 export function allStudents(props) {
-  let eachStudent;
-  if(props.allStudents && props.allStudents.map()){
-    eachStudent = props.allStudents.map((student) => {
-      return `<li>${student}</li>`;
-    });
-  }
+  console.log('this is props.allstudents', props.allStudents.allStudents)
+  //  let eachStudent = props.allStudents.allstudents.map((student) => {
+  //     return `<li>${student}</li>`;
+  //   });
 
-  console.log('props in AllUsers', props)
+  // console.log('props in AllUsers', props)
   return (
     <div>
       <div className="add-student">
@@ -20,19 +18,23 @@ export function allStudents(props) {
       </div>
       <h2> ALL STUDENTS </h2>
       <div className="all-students">
+      {props.allStudents.allStudents.map((student) => {
+        return <li key={student.id}>{student.Name}</li>
+      })}
       </div>
-      ${eachStudent}
     </div>
   )
+  // return(
+  //   <div>
+  //   </div>
+  // )
 }
 
 /*------------------------Containers-----------------------*/
 
 const mapStateToProps = (state) => {
   // console.log('this is alluserscontainer', state)
-  return {
-    allStudents: state.allStudents
-  };
+  return state
 };
 
 const mapDispatchToProps = function (dispatch) {

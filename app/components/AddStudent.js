@@ -33,7 +33,7 @@ export class AddStudent extends Component {
 
   handleSubmit(event) {
     // console.log(this.props)
-    event.preventDefault();
+    // event.preventDefault();
     // console.log('state in handle submit', this.state)
     this.props.onSubmit(this.state)
   }

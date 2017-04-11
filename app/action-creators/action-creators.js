@@ -2,9 +2,12 @@ import axios from 'axios';
 export const RECEIVE_STUDENTS = 'RECEIVE_STUDENTS';
 export const RECEIVE_CAMPUSES = 'RECEIVE_CAMPUSES';
 export const ADD_STUDENT = 'ADD_STUDENT';
+export const ADD_CAMPUS = 'ADD_CAMPUS';
+export const SELECTED_STUDENT = 'SELECTED_STUDENT';
+export const SELECTED_CAMPUS = 'SELECTED_CAMPUS';
 
 export const receiveUsers = (students) => {
-  console.log('action', students)
+  // console.log('action', students)
   return {
     type: RECEIVE_STUDENTS,
     allStudents: students
@@ -25,6 +28,29 @@ export const addStudent = (student) => {
   };
 };
 
+export const addCampus = (campus) => {
+  console.log('action campus', campus)
+  return {
+    type: ADD_CAMPUS,
+    campus: campus,
+  };
+};
+
+export const selectedCampus = (campus) => {
+  return {
+    type: SELECTED_CAMPUS,
+    campus: campus,
+  };
+};
+
+export const selectedStudent = (student) => {
+  return {
+    type: SELECTED_STUDENT,
+    student: student,
+  };
+};
+
+
 export const getStudents = () => {
   return (dispatch) => {
       axios.get('/api/students')
@@ -40,6 +66,7 @@ export const getStudents = () => {
   }
 
   export const getCampuses = () => {
+    console.log('getting campuses')
     return (dispatch) => {
       axios.get('/api/campuses')
         .then((response) => {
@@ -48,7 +75,7 @@ export const getStudents = () => {
         .then((allCampuses) => {
           dispatch(receiveCampuses(allCampuses));
         })
-        .catch(err => { console.log(err) });
+        .catch(err => { console.log(err)});
     };
   }
 
@@ -63,6 +90,22 @@ export const getStudents = () => {
         .then((newStudent) => {
           dispatch(addStudent(newStudent));
         })
-        .catch(next);
+        .catch(err => { console.log(err)});
     };
   }
+
+    export const submitCampus = (name) => {
+    console.log('posting', name)
+    return (dispatch) => {
+      axios.post('/api/campus/add', name)
+        .then((res) => {
+          console.log('this data from posting', res)
+          return res.data;
+        })
+        .then((newCampus) => {
+          dispatch(addCampus(newCampus));
+        })
+         .catch(err => { console.log(err)});
+    };
+  }
+
