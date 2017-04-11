@@ -39,14 +39,14 @@ export const addCampus = (campus) => {
 export const selectedCampus = (campus) => {
   return {
     type: SELECTED_CAMPUS,
-    campus: campus,
+    selectedCampus: campus,
   };
 };
 
 export const selectedStudent = (student) => {
   return {
     type: SELECTED_STUDENT,
-    student: student,
+    selectedStudent: student,
   };
 };
 
@@ -109,3 +109,24 @@ export const getStudents = () => {
     };
   }
 
+  export const getStudent = (id) => {
+    return (dispatch) => {
+      axios.get(`/api/student/${id}`)
+      .then((res) =>  res.data)
+      .then((student) => {
+        dispatch(selectedStudent(student));
+      })
+      .catch(err => {console.log(err)});
+    };
+  }
+
+ export const getCampus = (id) => {
+    return (dispatch) => {
+      axios.get(`/api/campus/${id}`)
+      .then((res) =>  res.data)
+      .then((campus) => {
+        dispatch(selectedCampus(campus));
+      })
+      .catch(err => {console.log(err)});
+    };
+  }

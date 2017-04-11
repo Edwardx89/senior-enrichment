@@ -13,13 +13,16 @@ export function allStudents(props) {
   // console.log('props in AllUsers', props)
   return (
     <div>
+     <div className="Homepage">
+        <Link to={'/'}>BACK TO HOMEPAGE</Link>
+      </div>
       <div className="add-student">
-        <li><Link to={'/student/add'}>Add New Student</Link></li>
+        <Link to={'/student/add'}>ADD NEW STUDENT</Link>
       </div>
       <h2> ALL STUDENTS </h2>
       <div className="all-students">
       {props.allStudents.allStudents.map((student) => {
-        return <li key={student.id}>{student.Name}</li>
+        return <li key={student.id}><Link to={`/student/${student.id}`}>{student.Name}</Link></li>
       })}
       </div>
     </div>
